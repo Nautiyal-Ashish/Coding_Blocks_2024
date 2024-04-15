@@ -1,0 +1,10 @@
+/* External style */
+h1 {
+    border: 2px solid red;
+    color: black;
+    background-color: beige;
+}
+
+p {
+    font-size: 15px;
+}

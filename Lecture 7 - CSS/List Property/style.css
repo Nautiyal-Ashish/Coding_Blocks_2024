@@ -1,0 +1,13 @@
+li {
+    border: 2px solid black;
+    list-style-type: circle;
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+div {
+    border-width: 6px;
+    border-style: solid;
+    border-color: red;
+    box-shadow: 9px 9px 1px blue;
+}

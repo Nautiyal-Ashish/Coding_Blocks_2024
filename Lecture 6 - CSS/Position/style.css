@@ -1,0 +1,49 @@
+div {
+    font-size: 20px;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px 10px;
+    border: 2px solid black;
+}
+
+/* Will Not Work */
+#static #middle {
+    position: static;
+    top: 100px;
+}
+
+/** Will Work */
+
+/* Takes offset according to his own position */
+#relative #middle {
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+
+/* Takes offset according to recently postioned parent */
+#absolute #middle {
+    color: aliceblue;
+}
+
+/* Move accoding to body */
+#fixed #middle {
+    position: fixed;
+    top: 20px;
+}
+
+
+/* If parent have space then this will act as fixed --> */
+/* If parent dont have space then this will act as relative --> */
+#sticky #middle {
+    position: sticky;
+    top: 200px;
+}
+
+/* Parent given space  */
+#sticky {
+    height: 500px;
+    border: 2px solid black;
+}

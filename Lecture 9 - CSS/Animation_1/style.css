@@ -1,0 +1,94 @@
+/* ANIMATION Syntax */
+/* 
+
+@keyframes animationName {
+    Body
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    background-color: rgb(127, 144, 255);
+
+    /* ----------------------------------- */
+    animation-name: something;
+    animation-duration: 3s;
+    /* Must to write without it animation will not work */
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-direction: normal;
+    /* animation-direction: reverse; */
+    /* animation-direction: alternate; */
+    /* animation-direction: alternate-reverse; */
+    /* animation-fill-mode: forwards; */
+    /* Stops at last ending point   */
+    animation-fill-mode: backwards;
+    /* ends where delays last memory position */
+    animation-play-state: running;
+}
+
+
+.row:hover {
+    animation-play-state: paused;
+    /* animation-name: something; */
+    animation-duration: 3s;
+    /* Must to write without it animation will not work */
+    /* animation-iteration-count: infinite; */
+    /* animation-delay: 1s; */
+    /* animation-direction: normal; */
+    /* animation-direction: reverse; */
+    /* animation-direction: alternate; */
+    /* animation-direction: alternate-reverse; */
+    /* --------------------------------- */
+    /* Stops at last ending point   */
+    /* animation-fill-mode: forwards; */
+    /* ends where delays last memory position */
+    /* animation-fill-mode: backwards; */
+}
+
+
+/* Way 1 */
+/* @keyframes something {
+
+    from {
+        height: 100px;
+    }
+
+    to {
+        height: 500px;
+    }
+} */
+
+/* Way 2 */
+@keyframes something {
+    from {
+        height: 100px;
+    }
+
+    25% {
+        height: 600px;
+        /* background-color: yellow; */
+    }
+
+    50% {
+        height: 200px;
+        /* background-color: rebeccapurple; */
+    }
+
+    75% {
+        height: 700px;
+        /* background-color: blue; */
+    }
+
+    to {
+        height: 400px;
+        background-color: red;
+    }
+
+}

@@ -1,0 +1,51 @@
+/* * Element Selector */
+
+h1 {
+    color: red;
+}
+
+p {
+    color: blue;
+}
+
+/* ----------------------------------------------------------- */
+/* * Class Selectors  */
+
+.ace {
+    color: red;
+}
+
+.king {
+    color: black;
+}
+
+/** Id Slectors */
+
+#queen {
+    color: brown;
+}
+
+/** Attribute Selector */
+
+input[type="text"] {
+    background-color: aquamarine;
+}
+
+input[type="password"] {
+    background-color: aliceblue;
+}
+
+a[href="http://www.google.com"] {
+    font-size: 28px;
+    color: red;
+}
+
+a[href="http://www.facebok.com"] {
+    font-size: 20px;
+}
+
+/* *Universal Selector */
+
+* {
+    margin: 5px;
+}

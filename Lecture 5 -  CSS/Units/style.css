@@ -1,0 +1,30 @@
+/* % */
+/* section {
+    width: 500px;
+} */
+
+/* % dependent on the parent element. */
+/* div {
+    width: 100%;
+    border: 3px solid black;
+} */
+
+/* em */
+/* SnowBall Effect */
+/* ul>li {
+    font-size: 2em;
+} */
+
+/* rem */
+
+/* ul>li {
+    font-size: 2rem;
+} */
+
+/* view height - vh, View Width - vw */
+
+div {
+    height: 70vh;
+    width: 70vw;
+    background-color: beige;
+}

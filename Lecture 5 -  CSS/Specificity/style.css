@@ -1,0 +1,18 @@
+/* ID > class > element */
+
+/* Least Powerful */
+h1 {
+    color: aquamarine;
+}
+
+/* Powerful */
+.hello {
+    color: aqua;
+}
+
+/* Most Powerful */
+#hii {
+    color: red;
+}
+
+/* Inline > Internal > External  */

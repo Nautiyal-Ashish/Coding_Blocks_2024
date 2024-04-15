@@ -1,0 +1,8 @@
+ul {
+    /* Inherited by other elements also  */
+    color: aqua;
+    font-size: 40px;
+
+    /* Didn't Get Inherited  */
+    border: 2px solid black;
+}
