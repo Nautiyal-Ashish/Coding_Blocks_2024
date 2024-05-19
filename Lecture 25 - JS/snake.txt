@@ -1,0 +1,11 @@
+Snake Game 
+
+1. By default snake right jayega 
+2. Up down left right direction change 
+3. Wall Hit / Game Over 
+4. food eat / Size and score increase 
+5. Khud ko kahye to out
+6. Song alag se add after the game
+
+----------------------
+2d array, canvas , array , random function , Math function ,setInteraval ,clearInterval , events
