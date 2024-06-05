@@ -44,11 +44,26 @@
 
 // Solution 3 -> 
 
-function fizzbuzz3(n) {
+function fizzBuzz3(n) {
+    let cnt3 = 1, cnt5 = 1;
     for (let i = 1; i <= n; i++) {
-
+        let str = ""
+        if (cnt3 === 3) {
+            str += "fizz";
+            cnt3 = 0;
+        }
+        if (cnt5 === 5) {
+            str += "buzz";
+            cnt5 = 0;
+        }
+        if (str === "") {
+            str += i
+        }
+        console.log(str);
+        cnt3++;
+        cnt5++;
     }
 }
 
-let n = process.argv.pop()
-fizzbuzz3(n)
+let n = process.argv.pop();
+fizzBuzz3(n)
