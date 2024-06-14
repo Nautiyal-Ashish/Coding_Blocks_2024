@@ -15,7 +15,4 @@
 console.log(process.cwd()); // jahan se file run kr rhe hai uska path
 console.log(__dirname); //process kahan chlra hai uska path 
 
-// -----------
-// fizzbuzz - node fileName number -> print number till 1 to 19 ->  if the number is divisible by 3 then print fizz -> and if the number is divisible by 5 print buzz -> and but if the number is divisible by both print fizzbuzz -> ❌no google -> optimized code 
 
-// -----------
