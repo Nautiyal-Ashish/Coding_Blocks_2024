@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/Product');
+const Review = require('../models/Review');
 // we cannot use app here as app is a global instance and it can only be used once in the main app.js file , we also can't export app from app.js it is not allowed but we can use mini instance or a part of app ehich is router
 const router = express.Router(); //mini instance 
 
@@ -22,10 +23,10 @@ router.post('/products', async (req, res) => {
     res.redirect('/products')
 })
 
-// to show a particular project on click on view
+// to show a particular product 
 router.get('/products/:id', async (req, res) => {
     let { id } = req.params;
-    let foundProduct = await Product.findById(id);
+    let foundProduct = await Product.findById(id).populate('reviews')
     res.render('products/show', { foundProduct })
 })
 
@@ -48,6 +49,15 @@ router.patch('/products/:id', async (req, res) => {
 router.delete('/products/:id', async (req, res) => {
     let { id } = req.params;
     let { name, img, price, desc } = req.body;
+
+    // this code is for when deleting the product we have to delete the reviews of that product also.
+    // Note review pehle delte karna hai
+    const product = await Product.findById(id);
+    // this below can also written in schema (check)
+    // for (let id of product.reviews) {
+    //     await Review.findByIdAndDelete(id);
+    // }
+
     await Product.findByIdAndDelete(id);
     res.redirect(`/products`);
 })

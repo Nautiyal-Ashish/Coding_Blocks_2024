@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+const Review = require('./Review');
+// const product = require('../routes/product')
 // making product schema 
 const productSchema = new mongoose.Schema({
     name: {
@@ -28,6 +29,15 @@ const productSchema = new mongoose.Schema({
         }
     ]
 })
+
+// middleware behind the scene mongodb operations karawane par use hota hai and iske andar pre and post middleware hote hai which are used over the schema and before the model is js class
+productSchema.post('findOneAndDelete', async (product) => {
+    if (product.reviews.length > 0) {
+        await Review.deleteMany({ _id: { $in: product.reviews } })
+    }
+})
+
+
 
 // making model
 let Product = mongoose.model('Product', productSchema);
