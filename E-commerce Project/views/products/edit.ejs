@@ -2,7 +2,12 @@
 
 <div class="row">
   <div class="col-4 mx-auto">
-    <form action="/products/<%=foundProduct._id%>?_method=PATCH" method="POST">
+    <form
+      action="/products/<%=foundProduct._id%>?_method=PATCH"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
       <div class="mb-3">
         <label for="naam">Name: </label>
         <input
@@ -12,7 +17,10 @@
           id="naam"
           placeholder="Name of the Product"
           value="<%=foundProduct.name%>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the name.</div>
       </div>
       <div class="mb-3">
         <label for="img">Image: </label>
@@ -23,7 +31,10 @@
           id="img"
           placeholder="Image URL of the Product"
           value="<%=foundProduct.img%>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the image path.</div>
       </div>
       <div class="mb-3">
         <label for="paisa">Price: </label>
@@ -34,7 +45,10 @@
           id="paisa"
           placeholder="Enter the Price of the Product"
           value="<%=foundProduct.price%>"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the price.</div>
       </div>
       <div class="mb-3">
         <label for="desc">Description: </label>
@@ -44,12 +58,42 @@
           rows="5"
           cols="40"
           placeholder="Add Description of the Product"
+          required
         >
           <%=foundProduct.name%>
     </textarea
         >
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the description.</div>
       </div>
       <button type="submit" class="btn btn-success btn-sm">Edit Product</button>
     </form>
   </div>
 </div>
+
+<script>
+  // iife -> Immidiately invoked function expression
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>

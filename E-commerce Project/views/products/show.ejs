@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <!-- Review Section -->
+  <!-- Review form Section -->
   <div class="col-lg-4">
     <h1 class="display-5">Leave a Review</h1>
     <form action="/products/<%=foundProduct._id%>/review" method="POST">
@@ -45,6 +45,7 @@
       </div>
       <button class="btn btn-sm btn-success">Add Review</button>
     </form>
+    <!-- Review Card  -->
     <div class="my-3">
       <% for(let review of foundProduct.reviews){ %>
       <div class="card">

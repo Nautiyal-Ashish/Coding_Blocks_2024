@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-4 mx-auto">
-    <form action="/products" method="post">
+    <form action="/products" method="post" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="naam">Name: </label>
         <input
@@ -11,7 +11,10 @@
           name="name"
           id="naam"
           placeholder="Name of the Product"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the name.</div>
       </div>
       <div class="mb-3">
         <label for="img">Image: </label>
@@ -21,7 +24,10 @@
           name="img"
           id="img"
           placeholder="Image URL of the Product"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please give a image path.</div>
       </div>
       <div class="mb-3">
         <label for="paisa">Price: </label>
@@ -31,7 +37,10 @@
           name="price"
           id="paisa"
           placeholder="Enter the Price of the Product"
+          required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please enter the price.</div>
       </div>
       <div class="mb-3">
         <label for="desc">Description: </label>
@@ -41,9 +50,41 @@
           rows="5"
           cols="40"
           placeholder="Add Description of the Product"
+          required
         ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+          Please enter the description of product.
+        </div>
       </div>
       <button type="submit" class="btn btn-success btn-sm">Add Product</button>
     </form>
   </div>
 </div>
+
+<script>
+  // iife -> Immidiately invoked function expression
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
