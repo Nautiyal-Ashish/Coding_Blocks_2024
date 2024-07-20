@@ -6,25 +6,25 @@ const Product = require('./models/Product');
 const products = [
     {
         name: "Iphone 14Pro",
-        img: "https://images.unsplash.com/photo-1663408466313-2d4e7edaf172?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGlwaG9uZSUyMDE0JTIwcHJvfGVufDB8fDB8fHww",
+        img: "https://images.unsplash.com/photo-1678652197831-2d180705cd2c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         price: 130000,
         desc: "Very Costly , aukaat se bhaar"
     },
     {
         name: "Macbook M2 Pro",
-        img: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWFjYm9va3xlbnwwfHwwfHx8MA%3D%3D",
+        img: "https://plus.unsplash.com/premium_photo-1681666713728-9ed75e148617?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         price: 250000,
         desc: "Bilkul Aukkat se Bhar"
     },
     {
         name: "Apple Watch",
-        img: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8QXBwbGUlMjBXYXRjaHxlbnwwfHwwfHx8MA%3D%3D",
+        img: "https://images.unsplash.com/photo-1642101373432-a9c683c34902?q=80&w=1033&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         price: 34000,
         desc: "ye sasta hai lelo"
     },
     {
         name: "Ipad Pro",
-        img: "https://images.unsplash.com/photo-1628591459313-a64214c5bfac?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGlwYWQlMjBwcm98ZW58MHx8MHx8fDA%3D",
+        img: "https://images.unsplash.com/photo-1587033411391-5d9e51cce126?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         price: 80000,
         desc: "Ye show off ka item hai"
     },
