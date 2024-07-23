@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 const Review = require('../models/Review');
 // we cannot use app here as app is a global instance and it can only be used once in the main app.js file , we also can't export app from app.js it is not allowed but we can use mini instance or a part of app ehich is router
 const router = express.Router(); //mini instance 
-const { validateProduct } = require('../middleware');
+const { validateProduct, isLoggedIn } = require('../middleware');
 
 
 // to show all the products
@@ -19,7 +19,7 @@ router.get('/products', async (req, res) => {
 
 
 // to show the form for new product
-router.get('/product/new', (req, res) => {
+router.get('/product/new', isLoggedIn, (req, res) => {
     try {
         res.render('products/new');
     }
@@ -29,10 +29,12 @@ router.get('/product/new', (req, res) => {
 })
 
 // to actually add the product
-router.post('/products', validateProduct, async (req, res) => {
+router.post('/products', isLoggedIn, validateProduct, async (req, res) => {
     try {
         let { name, img, price, desc } = req.body;
         await Product.create({ name, img, price, desc })
+        req.flash('success', 'Product added succesfully')
+
         res.redirect('/products');
     }
     catch (e) {
@@ -42,11 +44,11 @@ router.post('/products', validateProduct, async (req, res) => {
 
 
 // to show a particular product
-router.get('/products/:id', async (req, res) => {
+router.get('/products/:id', isLoggedIn, async (req, res) => {
     try {
         let { id } = req.params;
         let foundProduct = await Product.findById(id).populate('reviews');
-        res.render('products/show', { foundProduct })
+        res.render('products/show', { foundProduct, msg: req.flash('msg') })
     }
     catch (e) {
         res.status(500).render('error', { err: e.message });
@@ -55,7 +57,7 @@ router.get('/products/:id', async (req, res) => {
 
 
 // form to edit the product
-router.get('/products/:id/edit', async (req, res) => {
+router.get('/products/:id/edit', isLoggedIn, async (req, res) => {
     try {
         let { id } = req.params;
         let foundProduct = await Product.findById(id);
@@ -67,11 +69,14 @@ router.get('/products/:id/edit', async (req, res) => {
 })
 
 // to actually edit the data in db
-router.patch('/products/:id', validateProduct, async (req, res) => {
+router.patch('/products/:id', isLoggedIn, validateProduct, async (req, res) => {
     try {
         let { id } = req.params;
         let { name, img, price, desc } = req.body;
         await Product.findByIdAndUpdate(id, { name, img, price, desc })
+        // flash
+        req.flash('success', 'Product edited succesfully')
+
         res.redirect(`/products/${id}`);
     }
     catch (e) {
@@ -81,7 +86,7 @@ router.patch('/products/:id', validateProduct, async (req, res) => {
 
 
 // to delete a product
-router.delete('/products/:id', async (req, res) => {
+router.delete('/products/:id', isLoggedIn, async (req, res) => {
     try {
         let { id } = req.params;
         const product = await Product.findById(id);
@@ -94,6 +99,8 @@ router.delete('/products/:id', async (req, res) => {
         // }
 
         await Product.findByIdAndDelete(id);
+        req.flash('success', 'Product deleted succesfully')
+
         res.redirect('/products');
     }
     catch (e) {

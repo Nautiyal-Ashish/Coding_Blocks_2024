@@ -1,5 +1,7 @@
 // ssv middleware 
+// const Product = require('./models/Product');
 const { productSchema, reviewSchema } = require('./schema')
+
 
 const validateProduct = (req, res, next) => {
     const { name, img, price, desc } = req.body;
@@ -12,14 +14,22 @@ const validateProduct = (req, res, next) => {
 
 
 
-const validateReview = () => {
+const validateReview = (req, res, next) => {
     const { rating, comment } = req.body;
-    const { error } = productSchema.validate({ rating, comment });
+    const { error } = reviewSchema.validate({ rating, comment });
     if (error) {
         return res.render('error')
     }
     next();
 }
 
+const isLoggedIn = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.flash('error', "Please login first");
+        return res.redirect('/login');
+    }
+    next()
+}
 
-module.exports = { validateProduct, validateReview }
+
+module.exports = { isLoggedIn, validateProduct, validateReview }
