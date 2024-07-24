@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 const Review = require('../models/Review');
 // we cannot use app here as app is a global instance and it can only be used once in the main app.js file , we also can't export app from app.js it is not allowed but we can use mini instance or a part of app ehich is router
 const router = express.Router(); //mini instance 
-const { validateProduct, isLoggedIn } = require('../middleware');
+const { validateProduct, isLoggedIn, isSeller, isProductAuthor } = require('../middleware');
 
 
 // to show all the products
@@ -29,10 +29,10 @@ router.get('/product/new', isLoggedIn, (req, res) => {
 })
 
 // to actually add the product
-router.post('/products', isLoggedIn, validateProduct, async (req, res) => {
+router.post('/products', isLoggedIn, isSeller, validateProduct, async (req, res) => {
     try {
         let { name, img, price, desc } = req.body;
-        await Product.create({ name, img, price, desc })
+        await Product.create({ name, img, price, desc, author: req.user._id })
         req.flash('success', 'Product added succesfully')
 
         res.redirect('/products');
@@ -86,7 +86,7 @@ router.patch('/products/:id', isLoggedIn, validateProduct, async (req, res) => {
 
 
 // to delete a product
-router.delete('/products/:id', isLoggedIn, async (req, res) => {
+router.delete('/products/:id', isLoggedIn, isProductAuthor, async (req, res) => {
     try {
         let { id } = req.params;
         const product = await Product.findById(id);

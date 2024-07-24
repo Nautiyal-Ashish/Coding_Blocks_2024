@@ -12,6 +12,7 @@ include('../partials/flash') %>
         <h5 class="card-title"><%= item.price %></h5>
         <p class="card-text"><%= item.desc %></p>
         <a href="/products/<%= item.id %>" class="btn btn-info">View Product</a>
+        <% if(currentUser && currentUser.role === 'seller'){ %>
         <form
           action="/products/<%= item.id %>?_method=DELETE"
           method="POST"
@@ -19,6 +20,7 @@ include('../partials/flash') %>
         >
           <button class="btn btn-sm btn-danger">Delete</button>
         </form>
+        <% } %>
       </div>
     </div>
   </div>

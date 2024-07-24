@@ -11,10 +11,11 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/User');
 
-// Routes
+// requiring Routes
 const productRoutes = require('./routes/product');
 const reviewRoutes = require('./routes/review');
 const authRoutes = require('./routes/auth');
+const cartRoutes = require('./routes/cart');
 
 // mongoose connection 
 mongoose.connect('mongodb://127.0.0.1:27017/shopping-app')
@@ -65,10 +66,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 // seeding database
 // seedDB() //do not comment again because data will duplicate (This is to run only once to add data in db)
 
-// So that run after every incoming request 
+// So that run after every incoming request  (using routes)
 app.use(productRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes);
+app.use(cartRoutes);
 
 
 // Server Connection 

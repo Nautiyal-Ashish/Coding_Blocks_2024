@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        trim: true, 
+        trim: true,
     },
     price: {
         type: Number,
@@ -21,12 +21,17 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    // array[] used for multiple duplicates
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ]
+    ],
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 // middleware behind the scene mongodb operations karawane par use hota hai and iske andar pre and post middleware hote hai which are used over the schema and before the model is js class
