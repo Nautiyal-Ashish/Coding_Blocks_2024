@@ -1,13 +1,12 @@
-import React, { Fragment, useRef } from 'react'
-import axios from 'axios'
+import React, { Fragment, useRef } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import styles from "./NewQuote.module.css";
 
 function NewQuote() {
-
   const usernameInpRef = useRef();
   const quoteInpRef = useRef();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const addQuoteHandler = async (e) => {
     e.preventDefault();
@@ -15,33 +14,45 @@ function NewQuote() {
     let text = quoteInpRef.current.value;
     try {
       let resp = await axios.post('http://localhost:8080/addQuotes', { author, text });
-      // console.log(resp , "axios res")
-      navigate('/')
+      navigate('/');
+    } catch (e) {
+      console.log("cannot post at this moment");
     }
-    catch (e) {
-      console.log("cannot post at this moment")
-    }
-  }
-
+  };
 
   return (
     <Fragment>
-      <form onSubmit={addQuoteHandler}>
-        <h1>New Quote Form</h1>
-        <div>
-          <label htmlFor='author'>Author:</label>
-          <input type='text' id='author' ref={usernameInpRef} placeholder='Add Author Name' />
-        </div>
-        <div>
-          <label htmlFor='quote'>Quote:</label>
-          <textarea rows={4} cols={10} id='quote' ref={quoteInpRef} placeholder='Add Author Quote' ></textarea>
-        </div>
-        <button>Add Quote</button>
-
-      </form>
-
+      <div className={styles.container}>
+        <h1 className={styles.title}>New Quote Form</h1>
+        <form onSubmit={addQuoteHandler} className={styles.form}>
+          <div className={styles.formGroup}>
+            <label htmlFor='author' className={styles.label}>Author:</label>
+            <input
+              type='text'
+              id='author'
+              ref={usernameInpRef}
+              className={styles.input}
+              placeholder='Add Author Name'
+              required
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor='quote' className={styles.label}>Quote:</label>
+            <textarea
+              rows={4}
+              cols={10}
+              id='quote'
+              ref={quoteInpRef}
+              className={styles.textarea}
+              placeholder='Add Author Quote'
+              required
+            ></textarea>
+          </div>
+          <button className={styles.button}>Add Quote</button>
+        </form>
+      </div>
     </Fragment>
-  )
+  );
 }
 
-export default NewQuote
+export default NewQuote;

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Quote from '../Quote/Quote';
+import styles from "./AllQuotes.module.css";
 
 function AllQuotes() {
   let [quotes, setQuotes] = useState([])
@@ -17,7 +18,7 @@ function AllQuotes() {
 
   return (
     <Fragment>
-      <div>
+      <div className={styles.AllQuotes}>
         All Quotes
       </div>
       {
