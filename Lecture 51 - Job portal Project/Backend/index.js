@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-// const mainHandler = require('mainHandler');
+const mainHandler = require('./mainHandler');
 
 const app = express();
 
@@ -16,7 +16,7 @@ mongoose.connect(process.env.DB_URI).then(() => {
 }).catch(err => { console.log(`Error in DB`, err); })
 
 // mainHandler 
-
+app.use('api/v1', mainHandler);
 
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => {
